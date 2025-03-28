@@ -1,4 +1,4 @@
-import { pgTable, text, varchar, timestamp, boolean, uuid } from 'drizzle-orm/pg-core';
+import { pgTable, text, varchar, timestamp, boolean, uuid, pgEnum } from 'drizzle-orm/pg-core';
 import { sql, relations, desc } from 'drizzle-orm';
 
 // USER SCHEMA
@@ -22,7 +22,7 @@ export const user = pgTable('user', {
 // USER RELATIONS
 export const userRelations = relations(user, ({ many }) => ({
   sessions: many(userSession),
-  tokens: many(userToken),
+  tokens: many(accessToken),
 }))
 
 // USER SESSION DATA
@@ -43,23 +43,30 @@ export const userSessionRelations = relations(userSession, ({ one }) => ({
   })
 }));
 
+// CREATING ACCESS TOKEN TYPES
+export const accessTokenType = pgEnum('access_token_type', [
+  'programmatic_access',
+  'default_access',
+]);
+
 // USER TOKENS DATA
-export const userToken = pgTable('user_tokens', {
+export const accessToken = pgTable('access_token', {
   id: uuid('id').default(sql`gen_random_uuid()`).primaryKey(),
   createdAt: timestamp('created_at').default(sql`CURRENT_TIMESTAMP`).notNull(),
   expiresAt: timestamp('expires_at').notNull(),
 
   name: varchar('name', { length: 128 }).notNull(),
   description: text(),
+  accessTokenType: accessTokenType('access_token_type').default('default_access').notNull(),
   isRevoked: boolean('is_revoked').default(true),
   token: uuid('token').defaultRandom().notNull(),
   userId: uuid('user_id').references(() => user.id, { onDelete: 'cascade', onUpdate: 'cascade' }).notNull(),
 });
 
 // USER TOKEN RELATIONS
-export const userTokenRelations = relations(userToken, ({ one }) => ({
+export const accessTokenRelations = relations(accessToken, ({ one }) => ({
   user: one(user, {
-    fields: [userToken.userId],
+    fields: [accessToken.userId],
     references: [user.id],
   })
 }));
