@@ -15,24 +15,24 @@ function App() {
   return (
     <Routes>
         {/* GENERAL ROUTES */}
-      <Route index element={Home}/>
-      <Route path="about" element={About}/>
-      <Route path='tos' element={ToS} />
-      <Route path="privacy" element={Privacy} />
+      <Route path="/" element={<Home />} />
+      <Route path="about" element={<About />} />
+      <Route path='tos' element={<ToS />} />
+      <Route path="privacy" element={<Privacy />} />
 
       <Route element={AppLayout}>
         {/* ROADMAP ROUTES */}
-        <Route path='roadmaps' element={Roadmaps} />
-        <Route path="roadmap">
-          <Route path="/:id" element={Roadmap} />
-          <Route path="create" element={CreateRoadmap} />
-          <Route path="edit/:id" element={EditRoadmap} />
+        <Route path='roadmaps' element={<Roadmaps />} />
+        <Route path="/roadmap">
+          <Route path=":id" element={<Roadmap />} />
+          <Route path="create" element={<CreateRoadmap />} />
+          <Route path="edit/:id" element={<EditRoadmap />} />
         </Route>
         
         {/* TOKEN ROUTES */}
-        <Route path='tokens' element={Tokens} />
+        <Route path='tokens' element={<Tokens />} />
         <Route path='token'>
-          <Route path="create" element={CreateToken} />
+          <Route path="create" element={<CreateToken />} />
         </Route>
       </Route>
 
