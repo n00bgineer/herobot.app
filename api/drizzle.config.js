@@ -1,14 +1,15 @@
 import 'dotenv/config';
 import dbConfig from './src/db/config.js';
+import { defineConfig } from 'drizzle-kit';
 
-export default {
+const isProduction = process.env.NODE_ENV === 'production';
+console.log(`CONNECITNG TO ${isProduction? "PRODUCTION": "LOCAL"} DATABASE`)
+
+export default defineConfig({
   out: './src/db/migrate',
   schema: './src/db/schema.js',
   dialect: 'postgresql',
   dbCredentials: {
-    connectionString: dbConfig.connectionString,
-    ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : undefined,
+    url: dbConfig.connectionString,
   },
-  verbose: true,
-  strict: true,
-};
+});

@@ -1,4 +1,4 @@
-import { pgTable, serial, text, varchar, timestamp, boolean, json, uuid } from 'drizzle-orm/pg-core';
+import { pgTable, text, varchar, timestamp, boolean, uuid } from 'drizzle-orm/pg-core';
 import { sql, relations } from 'drizzle-orm';
 
 // USER SCHEMA
@@ -30,7 +30,7 @@ export const userSession = pgTable('user_sessions', {
   createdAt: timestamp('created_at').default(sql`CURRENT_TIMESTAMP`).notNull(),
   expiresAt: timestamp('expires_at').notNull(),
 
-  userId: serial('user_id').references(() => user.id).notNull(),
+  userId: uuid('user_id').references(() => user.id).notNull(),
   token: text('token').notNull(),
 });
 
