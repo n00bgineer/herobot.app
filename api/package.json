@@ -1,14 +1,25 @@
 {
   "name": "herobot-api",
+  "description": "Server application for herobot",
+  "author": "n00bgineer",
   "scripts": {
     "dev": "wrangler dev",
-    "deploy": "wrangler deploy --minify"
+    "deploy": "wrangler deploy --minify",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "npx drizzle-kit migrate",
+    "db:push": "npx drizzle-kit push",
+    "db:studio": "drizzle-kit studio"
   },
   "dependencies": {
-    "hono": "^4.7.5"
+    "dotenv": "^16.4.7",
+    "drizzle-orm": "^0.41.0",
+    "hono": "^4.7.5",
+    "postgres": "^3.4.5"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20250214.0",
+    "drizzle-kit": "^0.30.6",
+    "tsx": "^4.19.3",
     "wrangler": "^4.4.0"
   }
 }
