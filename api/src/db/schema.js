@@ -1,5 +1,5 @@
 import { pgTable, text, varchar, timestamp, boolean, uuid } from 'drizzle-orm/pg-core';
-import { sql, relations } from 'drizzle-orm';
+import { sql, relations, desc } from 'drizzle-orm';
 
 // USER SCHEMA
 export const user = pgTable('user', {
@@ -21,7 +21,8 @@ export const user = pgTable('user', {
 
 // USER RELATIONS
 export const userRelations = relations(user, ({ many }) => ({
-  sessions: many(userSession)
+  sessions: many(userSession),
+  tokens: many(userToken),
 }))
 
 // USER SESSION DATA
@@ -38,6 +39,27 @@ export const userSession = pgTable('user_sessions', {
 export const userSessionRelations = relations(userSession, ({ one }) => ({
   user: one(user, {
     fields: [userSession.userId],
+    references: [user.id],
+  })
+}));
+
+// USER TOKENS DATA
+export const userToken = pgTable('user_tokens', {
+  id: uuid('id').default(sql`gen_random_uuid()`).primaryKey(),
+  createdAt: timestamp('created_at').default(sql`CURRENT_TIMESTAMP`).notNull(),
+  expiresAt: timestamp('expires_at').notNull(),
+
+  name: varchar('name', { length: 128 }).notNull(),
+  description: text(),
+  isRevoked: boolean('is_revoked').default(true),
+  token: uuid('token').defaultRandom().notNull(),
+  userId: uuid('user_id').references(() => user.id).notNull(),
+});
+
+// USER TOKEN RELATIONS
+export const userTokenRelations = relations(userToken, ({ one }) => ({
+  user: one(user, {
+    fields: [userToken.userId],
     references: [user.id],
   })
 }));
