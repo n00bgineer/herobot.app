@@ -2,6 +2,7 @@
   "name": "herobot-api",
   "description": "Server application for herobot",
   "author": "n00bgineer",
+  "type": "module",
   "scripts": {
     "dev": "wrangler dev",
     "deploy": "wrangler deploy --minify",
