@@ -1,5 +1,5 @@
 {
-  "id": "f704756e-9e82-4a21-9dcc-7a7454f25714",
+  "id": "80903162-82be-4332-9358-bbf46197d662",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -123,7 +123,7 @@
         },
         "user_id": {
           "name": "user_id",
-          "type": "serial",
+          "type": "uuid",
           "primaryKey": false,
           "notNull": true
         },
