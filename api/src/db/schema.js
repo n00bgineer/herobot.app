@@ -31,7 +31,7 @@ export const userSession = pgTable('user_sessions', {
   createdAt: timestamp('created_at').default(sql`CURRENT_TIMESTAMP`).notNull(),
   expiresAt: timestamp('expires_at').notNull(),
 
-  userId: uuid('user_id').references(() => user.id).notNull(),
+  userId: uuid('user_id').references(() => user.id, { onDelete: 'cascade', onUpdate: 'cascade' }).notNull(),
   token: text('token').notNull(),
 });
 
@@ -53,7 +53,7 @@ export const userToken = pgTable('user_tokens', {
   description: text(),
   isRevoked: boolean('is_revoked').default(true),
   token: uuid('token').defaultRandom().notNull(),
-  userId: uuid('user_id').references(() => user.id).notNull(),
+  userId: uuid('user_id').references(() => user.id, { onDelete: 'cascade', onUpdate: 'cascade' }).notNull(),
 });
 
 // USER TOKEN RELATIONS
