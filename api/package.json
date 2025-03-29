@@ -11,13 +11,14 @@
     "db:push": "npx drizzle-kit push",
     "db:studio": "drizzle-kit studio",
     "db:seed": "node ./src/scripts/seed.js"
-    
   },
   "dependencies": {
+    "@hono/zod-validator": "^0.4.3",
     "dotenv": "^16.4.7",
     "drizzle-orm": "^0.41.0",
     "hono": "^4.7.5",
-    "postgres": "^3.4.5"
+    "postgres": "^3.4.5",
+    "zod": "^3.24.2"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20250214.0",
