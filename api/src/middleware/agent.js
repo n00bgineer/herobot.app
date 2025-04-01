@@ -23,19 +23,16 @@ export const verifyTokenMiddleware = async (ctx, next) => {
       return unauthorized(ctx, "MISSING TOKEN IN AUTHORIZATION HEADER")
 
     // CHECKING VALIDITY OF TOKEN FROM THE DATABASE
-    const body = await ctx.req.json() || {};
-    const tokenData = await verifyToken({token, ...body});
+    const tokenData = await verifyToken(token);
+    ctx.logger.info()
+    console.log(tokenData);
     if(!tokenData)
       return unauthorized(ctx, "INVALID OR EXPIRED TOKEN")
 
-    // CHECKING VALIDITY OF THE BODY
-    const result = verifyTokenSchema.safeParse(body);
-    if(!result.success)
-      return validationError(ctx, "INCORRECT OR MISSING ITEMS IN REQUEST BODY")
-
+    ctx.set('token'. JSON.stringify({token, ...body}));
     next();
   }
   catch(error){
-    return unauthorized(ctx, "SOMETHING WENT WRONG")
+    return unauthorized(ctx, "SOMETHING WENT WRONG", error)
   }
 }
