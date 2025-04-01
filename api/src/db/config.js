@@ -1,9 +1,9 @@
-import 'dotenv/config';
+import config from '../config';
 
-const isProduction = process.env.NODE_ENV === 'production';
+const isProduction = config.NODE_ENV === 'production';
 
 const dbConfig = {
-  connectionString: process.env.DATABASE_URL,
+  connectionString: config.DATABASE_URL,
   options: isProduction 
     ? {
         max: 20, 

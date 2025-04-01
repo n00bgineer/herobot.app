@@ -1,8 +1,8 @@
-import 'dotenv/config';
+import config from './src/config.js';
 import dbConfig from './src/db/config.js';
 import { defineConfig } from 'drizzle-kit';
 
-const isProduction = process.env.NODE_ENV === 'production';
+const isProduction = config.NODE_ENV === 'production';
 console.log(`CONNECITNG TO ${isProduction? "PRODUCTION": "LOCAL"} DATABASE`)
 
 export default defineConfig({

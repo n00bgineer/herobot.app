@@ -1,12 +1,11 @@
-
-import 'dotenv/config';
+import postgres from 'postgres';
+import config from '../config.js';
 import dbConfig from './config.js';
 import * as schema from './schema.js';
 import { drizzle } from 'drizzle-orm/postgres-js';
-import postgres from 'postgres';
 
-const isProduction = process.env.NODE_ENV === 'production';
-console.log(`CONNECITNG TO ${isProduction? "PRODUCTION": "LOCAL"} DATABASE`)
+const isProduction = config.NODE_ENV === 'production';
+console.log(`CONNECITNG TO ${isProduction? "PRODUCTION": "LOCAL"} DATABASE`, dbConfig.connectionString)
 
 const client = postgres(dbConfig.connectionString, dbConfig.options);
 const db = drizzle(client, { schema });
