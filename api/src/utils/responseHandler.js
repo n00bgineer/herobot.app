@@ -45,7 +45,7 @@ export const sendError = (ctx, message, errors = null, status) => {
 export const badRequest = (ctx, message = null, errors = null) => {
   return sendError(
     ctx, 
-    message || 'Bad request: The server cannot process the request due to client error', 
+    message || 'BAD REQUEST: THE SERVER CANNOT PROCESS THE REQUEST DUE TO CLIENT ERROR', 
     errors, 
     400
   );
@@ -61,7 +61,7 @@ export const badRequest = (ctx, message = null, errors = null) => {
 export const unauthorized = (ctx, message = null, errors = null) => {
   return sendError(
     ctx, 
-    message || 'Unauthorized: Authentication is required and has failed or not been provided', 
+    message || 'UNAUTHORIZED: AUTHENTICATION IS REQUIRED AND HAS FAILED OR NOT BEEN PROVIDED', 
     errors, 
     401
   );
@@ -77,7 +77,7 @@ export const unauthorized = (ctx, message = null, errors = null) => {
 export const forbidden = (ctx, message = null, errors = null) => {
   return sendError(
     ctx, 
-    message || 'Forbidden: You do not have permission to access this resource', 
+    message || 'FORBIDDEN: YOU DO NOT HAVE PERMISSION TO ACCESS THIS RESOURCE', 
     errors, 
     403
   );
@@ -93,7 +93,7 @@ export const forbidden = (ctx, message = null, errors = null) => {
 export const notFound = (ctx, message = null, errors = null) => {
   return sendError(
     ctx, 
-    message || 'Not found: The requested resource could not be found', 
+    message || 'NOT FOUND: THE REQUESTED RESOURCE COULD NOT BE FOUND', 
     errors, 
     404
   );
@@ -109,7 +109,7 @@ export const notFound = (ctx, message = null, errors = null) => {
 export const validationError = (ctx, message = null, errors = null) => {
   return sendError(
     ctx, 
-    message || 'Validation error: The request was well-formed but contains semantic errors', 
+    message || 'VALIDATION ERROR: THE REQUEST WAS WELL-FORMED BUT CONTAINS SEMANTIC ERRORS', 
     errors, 
     422
   );
@@ -125,7 +125,7 @@ export const validationError = (ctx, message = null, errors = null) => {
 export const tooManyRequests = (ctx, message = null, errors = null) => {
   return sendError(
     ctx, 
-    message || 'Too many requests: You have sent too many requests in a given amount of time', 
+    message || 'TOO MANY REQUESTS: YOU HAVE SENT TOO MANY REQUESTS IN A GIVEN AMOUNT OF TIME', 
     errors, 
     429
   );
@@ -143,7 +143,7 @@ export const tooManyRequests = (ctx, message = null, errors = null) => {
 export const serverError = (ctx, message = null, errors = null) => {
   return sendError(
     ctx, 
-    message || 'Internal server error: Something went wrong on the server', 
+    message || 'INTERNAL SERVER ERROR: SOMETHING WENT WRONG ON THE SERVER', 
     errors, 
     500
   );
@@ -159,7 +159,7 @@ export const serverError = (ctx, message = null, errors = null) => {
 export const serviceUnavailable = (ctx, message = null, errors = null) => {
   return sendError(
     ctx, 
-    message || 'Service unavailable: The server is currently unable to handle the request', 
+    message || 'SERVICE UNAVAILABLE: THE SERVER IS CURRENTLY UNABLE TO HANDLE THE REQUEST', 
     errors, 
     503
   );
