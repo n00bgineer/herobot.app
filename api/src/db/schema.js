@@ -58,7 +58,7 @@ export const accessToken = pgTable('access_token', {
   name: varchar('name', { length: 128 }).notNull(),
   description: text().default(null),
   accessTokenType: accessTokenType('access_token_type').default('default_access').notNull(),
-  isRevoked: boolean('is_revoked').default(true),
+  isRevoked: boolean('is_revoked').default(false),
   token: uuid('token').defaultRandom().notNull().unique(),
   userId: uuid('user_id').references(() => user.id, { onDelete: 'cascade', onUpdate: 'cascade' }).notNull(),
 });
@@ -69,8 +69,7 @@ export const agentUsageLog = pgTable('agent_usage_log', {
   createdAt: timestamp('created_at').default(sql`CURRENT_TIMESTAMP`).notNull(),
   expiresAt: timestamp('expires_at').notNull(),
 
-  accessToken: uuid('access_token').references(() => accessToken.token, { onDelete: 'cascade', onUpdate: 'cascade' }).default(null),
-  invalidAccessToken: uuid('invalid_access_token').default(null),
+  accessToken: uuid('access_token').references(() => accessToken.token, { onDelete: 'cascade', onUpdate: 'cascade' }).notNull(),
   agentType: agentType('agent_type').notNull(),
   agentUsageType: agentUsageType('agent_usage_type').notNull()
 })
