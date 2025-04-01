@@ -5,36 +5,8 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1743179124757,
-      "tag": "0000_harsh_lady_bullseye",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "7",
-      "when": 1743185551567,
-      "tag": "0001_blushing_moonstone",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "7",
-      "when": 1743186416306,
-      "tag": "0002_nice_mariko_yashida",
-      "breakpoints": true
-    },
-    {
-      "idx": 3,
-      "version": "7",
-      "when": 1743186895483,
-      "tag": "0003_gifted_skrulls",
-      "breakpoints": true
-    },
-    {
-      "idx": 4,
-      "version": "7",
-      "when": 1743187053456,
-      "tag": "0004_flat_matthew_murdock",
+      "when": 1743512834033,
+      "tag": "0000_ambitious_kingpin",
       "breakpoints": true
     }
   ]

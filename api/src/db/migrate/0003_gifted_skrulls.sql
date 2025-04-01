@@ -1,2 +1,0 @@
-CREATE TYPE "public"."token_type" AS ENUM('programmatic_access', 'default_access');--> statement-breakpoint
-ALTER TABLE "user_tokens" ADD COLUMN "token_type" "token_type" DEFAULT 'default_access' NOT NULL;
