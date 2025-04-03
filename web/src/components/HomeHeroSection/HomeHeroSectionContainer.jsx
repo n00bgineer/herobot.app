@@ -9,9 +9,9 @@ const HomeHeroSectionContainer = styled(Box)(({ theme }) => ({
     zIndex: '2',
 
     '&> .hero-container': {
-      width: '80%',
+      width: '70%',
       margin: 'auto',
-      height: '40%',
+      height: '30%',
       padding: theme.spacing(2),
       display: 'flex',
       flexDirection: 'column',
@@ -25,7 +25,7 @@ const HomeHeroSectionContainer = styled(Box)(({ theme }) => ({
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'stretch',
-        gap: theme.spacing(1),
+        gap: theme.spacing(0.75),
 
         '&> .title': {
           textAlign: 'center',

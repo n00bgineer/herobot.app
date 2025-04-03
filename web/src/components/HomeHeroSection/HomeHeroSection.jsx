@@ -13,11 +13,11 @@ const HomeHeroSection = ({
     <HomeHeroSectionContainer id={id}>
       <Box className="hero-container">
         <Box className="hero-txt">
-          <Typography variant="h1" className="title">
+          <Typography variant="h1" className="title app-name">
             {title}
           </Typography>
           <Typography
-            variant="h6"
+            variant="body1"
             component="div"
             className="description"
             color="default "
