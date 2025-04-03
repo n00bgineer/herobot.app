@@ -1,13 +1,11 @@
 import { Box, Card, Typography } from '@mui/material'
-
-import { Link as RedwoodLink, routes } from '@redwoodjs/router'
-
 import AppLogoOptimised from 'src/assets/movingcastle-logo--optimised.webp'
 import AppLogo from 'src/assets/movingcastle-logo.webp'
 import CustomButton from 'src/components/Custom/CustomButton/CustomButton'
 import CustomImage from 'src/components/Custom/CustomImage/CustomImage'
 
 import NotFoundPageContainer from './NotFoundPageContainer'
+import { Link } from 'react-router'
 
 export default () => {
   return (
@@ -36,8 +34,8 @@ export default () => {
           size="medium"
           variant="contained"
           fullWidth={true}
-          component={RedwoodLink}
-          to={routes.home()}
+          component={Link}
+          to={{ pathname: "/" }}
         >
           Go back
         </CustomButton>

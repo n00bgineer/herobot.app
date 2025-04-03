@@ -1,8 +1,6 @@
 import { forwardRef, useEffect } from 'react'
-
-import { Link as RouterLink, useLocation } from '@redwoodjs/router'
-
 import CustomLinkContainer from './CustomLinkContainer'
+import { Link, useLocation } from 'react-router'
 
 /*
  * @name CustomLink
@@ -81,7 +79,7 @@ const CustomLink = forwardRef(function CustomLink(
 
   // SETTING LOCAL VARIABLES
   const commonProps = {
-    component: isExternal ? 'a' : RouterLink,
+    component: isExternal ? 'a' : Link,
     [isExternal ? 'href' : 'to']: to,
     onClick: handleClick,
   }

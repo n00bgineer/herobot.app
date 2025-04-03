@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet-async'
-import { config } from '../../config'
+import config from '../../config'
 
 const Metadata = ({ title, description, canonical, og, robots, twitter }) => {
   // SETTING LOCAL VARIABLES

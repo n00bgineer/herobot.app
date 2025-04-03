@@ -9,14 +9,13 @@ import {
   ListItemText,
 } from '@mui/material'
 
-import { Link } from '@redwoodjs/router'
-
 import CustomButton from '../Custom/CustomButton/CustomButton'
 import CustomTab from '../Custom/CustomTab/CustomTab'
 import CustomTabs from '../Custom/CustomTabs/CustomTabs'
 import ReportCard from '../ReportCard/ReportCard'
 
 import HomeFeatureSectionContainer from './HomeFeatureSectionContainer'
+import { Link } from 'react-router'
 
 /*
  * @name HomeFeatureSection
@@ -92,7 +91,7 @@ const HomeFeatureSection = ({
         className="plan-cta"
         size="medium"
         component={Link}
-        to={ctaLink}
+        to={{ pathname: ctaLink }}
         startIcon={ctaIcon}
         disabled={tabTitle.toUpperCase() === 'PREMIUM'}
       >

@@ -1,10 +1,10 @@
 import Metadata from 'src/components/Metadata/Metadata'
 import CustomMarkdown from 'src/components/Custom/CustomMarkdown/CustomMarkdown'
 import Page from 'src/components/Page/Page'
-import constants from 'src/state/constants'
+import constants from 'src/state/constants.jsx'
 
 const PrivacyPage = () => {
-  const { meta, document } = constants.policy.privacy || {}
+  const { meta, document } = constants.page.privacy || {}
 
   return (
     <>

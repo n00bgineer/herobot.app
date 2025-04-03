@@ -1,13 +1,11 @@
 import { Box, Card, Typography } from '@mui/material'
-
-import { Link, routes } from '@redwoodjs/router'
-
 import AppLogoOptimised from 'src/assets/movingcastle-logo--optimised.webp'
 import AppLogo from 'src/assets/movingcastle-logo.webp'
 import CustomButton from 'src/components/Custom/CustomButton/CustomButton'
 import CustomImage from 'src/components/Custom/CustomImage/CustomImage'
 
 import FatalErrorPageContainer from './FatalErrorPageContainer'
+import { Link } from 'react-router'
 
 const FatalErrorPage = () => (
     <FatalErrorPageContainer>
@@ -36,7 +34,7 @@ const FatalErrorPage = () => (
           variant="contained"
           fullWidth={true}
           component={Link}
-          to={routes.home()}
+          to={{ pathname: "/" }}
         >
           Go back
         </CustomButton>
