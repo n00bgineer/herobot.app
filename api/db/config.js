@@ -1,9 +1,11 @@
 import env from '../env.js';
 
-const isProduction = env.NODE_ENV === 'PRODUCTION';
+// SETTING LOCAL VARIABLES
+const { NODE_ENV, DATABASE_URL } = env;
+const isProduction = NODE_ENV === 'PRODUCTION';
 
 const dbConfig = {
-  connectionString: env.DATABASE_URL,
+  connectionString: DATABASE_URL,
   options: isProduction 
     ? {
         max: 20, 

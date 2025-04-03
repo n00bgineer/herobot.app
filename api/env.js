@@ -1,9 +1,6 @@
-import 'dotenv/config';
-
-console.log(process.env["NODE_ENV"])
-console.log(process.env["DATABASE_URL"])
+import { env } from "cloudflare:workers"
 
 export default {
-  NODE_ENV: process.env.NODE_ENV || 'LOCAL',
-  DATABASE_URL: process.env.DATABASE_URL
+    NODE_ENV: env.NODE_ENV || 'LOCAL',
+    DATABASE_URL: env.DATABASE_URL
 };
