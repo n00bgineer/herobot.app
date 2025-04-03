@@ -1,1 +1,99 @@
-@import "tailwindcss";
+/* APPLYING COMMON GLOBAL STYLES */
+:root {
+  --base-font-size: 8px;
+  --app-logo-font: "Rowdies", sans-serif;
+  --base-font: "Inter", sans-serif;
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-family: var(--base-font);
+}
+html, body, :root {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  min-height: 100vh;
+  font-family: var(--base-font);
+}
+ul, ol {
+  list-style: none;
+  font-family: var(--base-font);
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+  font-family: var(--base-font);
+}
+
+/* APPLYING STYLES TO REACT APP CONTAINER */
+#redwood-app {
+  min-height: 100vh;
+}
+
+/* DEFAULT STYLES ON APP LOGO, NAME & IT'S CONTAINER */
+.app-name {
+  font-weight: inherit!important;
+  margin: unset;
+  margin-block: unset;
+  height: fit-content;
+  font: inherit;
+  font-family: var(--app-logo-font)!important;
+  display: inline-block;
+}
+.app-name-italic {
+  font-style: italic!important;
+}
+.app-logo-small {
+  width: auto;
+  border-radius: var(--base-font-size);
+  height: calc(4 * var(--base-font-size));
+}
+.app-logo-medium {
+  width: auto;
+  border-radius: var(--base-font-size);
+  height: calc(6 * var(--base-font-size));
+}
+.app-logo-large {
+  width: auto;
+  border-radius: var(--base-font-size);
+  height: calc(8 * var(--base-font-size));
+}
+.app-logo-container {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 6px;
+}
+
+/* COMMON STYLES FOR CONTROLLING VISIBILITY OF CERTAIN ITEMS */
+.desktop-only-view{
+  display: block;
+}
+.mobile-only-view{
+  display: none;
+}
+
+@media screen and (max-width: 900px) {
+  .desktop-only-view{
+    display: none;
+  }
+  .mobile-only-view{
+    display: block;
+  }
+  .app-logo-small {
+    height: calc(2 * var(--base-font-size));
+  }
+  .app-logo-medium {
+    height: calc(4.5 * var(--base-font-size));
+  }
+  .app-logo-large {
+    height: calc(6 * var(--base-font-size));
+  }
+}
