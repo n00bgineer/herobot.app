@@ -8,7 +8,9 @@ import AppLogoOptimised from '../assets/herosite-logo--optimised.webp'
 export default {
   global: {
     header: {
-      appName: 'HeroBot',
+      appName: "HeroBot",
+      appTitle: "HeroBot - Your personal AI learning wizard",
+      siteUrl: "https://herobot.site/",
       appLogo: AppLogo,
       appLogoOptimised: AppLogoOptimised,
       links: [

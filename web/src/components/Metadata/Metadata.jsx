@@ -1,16 +1,14 @@
 import { Helmet } from 'react-helmet-async'
-import config from '../../config'
+import config from 'src/state/constants'
 
 const Metadata = ({ title, description, canonical, og, robots, twitter }) => {
-  // SETTING LOCAL VARIABLES
-  const { appTitle } = config;
-   
+
   return (
     <Helmet>
       {
         title?
-        <title>{title} | {appTitle}</title>:
-        <title>{appTitle}</title>
+        <title>{title} | {config.global.header.appTitle}</title>:
+        <title>{config.global.header.appTitle}</title>
       }
       {description && <meta name="description" content={description} />}
       {canonical && <link rel="canonical" href={canonical} />}
