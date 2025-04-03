@@ -1,6 +1,7 @@
 {
   "name": "herobot",
   "private": true,
+  "type": "module",
   "workspaces": [
     "web",
     "api"
