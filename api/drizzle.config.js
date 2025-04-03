@@ -1,13 +1,13 @@
-import config from './src/config.js';
-import dbConfig from './src/db/config.js';
+import env from './env.js';
+import dbConfig from './db/config.js';
 import { defineConfig } from 'drizzle-kit';
 
-const isProduction = config.NODE_ENV === 'production';
+const isProduction = env.NODE_ENV === 'PRODUCTION';
 console.log(`CONNECITNG TO ${isProduction? "PRODUCTION": "LOCAL"} DATABASE`)
 
 export default defineConfig({
-  out: './src/db/migrate',
-  schema: './src/db/schema.js',
+  out: './db/migrate',
+  schema: './db/schema.js',
   dialect: 'postgresql',
   dbCredentials: {
     url: dbConfig.connectionString,

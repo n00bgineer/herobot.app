@@ -1,6 +1,6 @@
-import env from '../../env.js';
+import env from '../env.js';
 
-const isProduction = config.NODE_ENV === 'production';
+const isProduction = env.NODE_ENV === 'PRODUCTION';
 
 const dbConfig = {
   connectionString: env.DATABASE_URL,
