@@ -1,8 +1,8 @@
 import { Box, Typography } from '@mui/material'
 
-import { Link, routes } from '@redwoodjs/router'
+import { Link } from "react-router";
 
-import constants from 'src/state/constants'
+import constants from 'src/state/constants.jsx'
 
 import CustomImage from '../Custom/CustomImage/CustomImage'
 import CustomLink from '../Custom/CustomLink/CustomLink'
@@ -15,20 +15,12 @@ const AppFooter = () => {
     appDescription,
     appLocation,
     links,
-    appLogo,
-    appLogoOptimised,
   } = constants.global.footer || {}
   const { about, contact, social } = links || {}
   return (
     <AppFooterContainer>
       <Box className="about">
-        <Box className="app-logo-container" component={Link} to={routes.home()}>
-          <CustomImage
-            src={appLogo}
-            placeholderSrc={appLogoOptimised}
-            alt="App logo"
-            className="app-logo-medium"
-          />
+        <Box className="app-logo-container" component={Link} to={{ pathname: "/" }}>
           <Typography variant="h3" component="div" className="app-name">
             {appName}
           </Typography>

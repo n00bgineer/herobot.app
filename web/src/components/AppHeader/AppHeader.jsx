@@ -3,15 +3,14 @@ import { useState } from 'react'
 import { Menu as MenuIcon } from '@mui/icons-material'
 import { Box, IconButton, Typography, useMediaQuery } from '@mui/material'
 
-import { Link as RouterLink, routes, useLocation } from '@redwoodjs/router'
-
-import constants from 'src/state/constants'
+import constants from 'src/state/constants.jsx'
 
 import CustomButton from '../Custom/CustomButton/CustomButton'
 import CustomImage from '../Custom/CustomImage/CustomImage'
 import CustomMenu from '../Custom/CustomMenu/CustomMenu'
 
 import AppHeaderContainer from './AppHeaderContainer'
+import { Link, useLocation } from 'react-router'
 
 const AppHeader = ({ id }) => {
   // SETTING HOOKS
@@ -21,23 +20,23 @@ const AppHeader = ({ id }) => {
   // SETTING LOCAL STATES
   const [anchorEl, setAnchorEl] = useState(null)
 
-  // SETTING LOCAL VARIABLES
-  const { appName, appLogo, appLogoOptimised, links } =
+  // SETTING LOCAL VARIABL  ES
+  const { appName, links } =
     constants.global.header || {}
   const open = Boolean(anchorEl)
 
   // SETTING CONDITIONALS
   if (
-    pathname !== routes.home() &&
+    pathname !== "/" &&
     links.findIndex((link) => link.children.toUpperCase() === 'HOME') === -1
   ) {
     links.unshift({
-      to: routes.home(),
+      to: "/",
       children: 'Home',
       variant: 'text',
     })
   } else if (
-    pathname === routes.home() &&
+    pathname === "/" &&
     links.findIndex((link) => link.children.toUpperCase() === 'HOME') !== -1
   ) {
     links.shift()
@@ -68,15 +67,9 @@ const AppHeader = ({ id }) => {
     <AppHeaderContainer id={id}>
       <Box
         className="app-logo-container"
-        component={RouterLink}
-        to={routes.home()}
+        component={Link}
+        to={{ pathname: "/" }}
       >
-        <CustomImage
-          src={appLogo}
-          placeholderSrc={appLogoOptimised}
-          alt="App logo"
-          className="app-logo-medium"
-        />
         <Typography variant="h3" component="div" className="app-name">
           {appName}
         </Typography>
@@ -99,7 +92,7 @@ const AppHeader = ({ id }) => {
                 const { to, children } = link || {}
                 return {
                   to: to,
-                  component: RouterLink,
+                  component: Link,
                   onClick: handleCloseNavigationMenu,
                   label: children,
                   sx: {
@@ -116,7 +109,7 @@ const AppHeader = ({ id }) => {
             return (
               <CustomButton
                 key={index + 1}
-                component={RouterLink}
+                component={Link}
                 to={to}
                 size="medium"
                 variant={variant}
