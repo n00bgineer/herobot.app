@@ -1,0 +1,16 @@
+{
+  "name": "herobot-script",
+  "version": "0.0.0",
+  "main": "optimiseImage.js",
+  "scripts": {
+    "optimise:image": "node ./optimiseImage.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "chokidar": "^4.0.3",
+    "sharp": "^0.33.5"
+  }
+}
