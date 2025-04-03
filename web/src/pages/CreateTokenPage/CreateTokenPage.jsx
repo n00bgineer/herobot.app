@@ -1,8 +1,9 @@
 import React from 'react'
+import Page from '../../components/Page/Page'
 
 const CreateToken = () => {
   return (
-    <div>CreateToken</div>
+    <Page></Page>
   )
 }
 
