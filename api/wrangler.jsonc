@@ -6,4 +6,14 @@
   "compatibility_flags": [
     "nodejs_compat"
   ],
+  "vars": {
+    "NODE_ENV": "LOCAL"
+  },
+  "env": {
+    "production": {
+      "vars": {
+        "NODE_ENV": "PRODUCTION"
+      }
+    }
+  }
 }
