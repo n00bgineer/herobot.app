@@ -1,9 +1,9 @@
-import config from '../config';
+import env from '../../env.js';
 
 const isProduction = config.NODE_ENV === 'production';
 
 const dbConfig = {
-  connectionString: config.DATABASE_URL,
+  connectionString: env.DATABASE_URL,
   options: isProduction 
     ? {
         max: 20, 
