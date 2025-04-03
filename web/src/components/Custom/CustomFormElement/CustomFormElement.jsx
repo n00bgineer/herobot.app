@@ -14,7 +14,7 @@ const TextFieldElement = ({
   ...props
 }) => {
   // EXTRACTING ADDITIONAL PROPS
-  const { InputProps, ...otherProps } = { ...props } || {}
+  const { InputProps, ...otherProps } = props || {}
   const {
     disabled: customDisabled = false,
     onBlur: customOnBlur,
