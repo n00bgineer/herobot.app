@@ -16,9 +16,12 @@
     "@emotion/styled": "^11.14.0",
     "@mui/icons-material": "^7.0.1",
     "@mui/material": "^7.0.1",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "markdown-to-jsx": "^7.7.4",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-helmet-async": "^2.0.5",
     "react-hook-form": "^7.54.2",
+    "react-lazy-load-image-component": "^1.6.3",
     "react-router": "^7.4.0"
   },
   "devDependencies": {
