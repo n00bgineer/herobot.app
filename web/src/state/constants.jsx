@@ -14,22 +14,7 @@ export default {
       appLogo: AppLogo,
       appLogoOptimised: AppLogoOptimised,
       links: [
-        {
-          to: {
-            pathname: "/",
-            hashmap: "#roadmap"
-          },
-          children: 'Roadmaps',
-          variant: 'text',
-        },
-        {
-          to: {
-            pathname: "/",
-            hashmap: "#feature"
-          },
-          children: 'Features',
-          variant: 'text',
-        },
+        
       ],
     },
     footer: {
@@ -136,8 +121,8 @@ export default {
         },
       },
       hero: {
-        title: "",
-        description: "",
+        title: "You are the hero of your own story",
+        description: "Your learning journey begins with a simple question: What do you want to learn?",
       },
     },
     about: {
