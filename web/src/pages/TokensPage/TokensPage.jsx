@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Tokens = () => {
+const TokensPage = () => {
   return (
-    <div>Tokens</div>
+    <div>TokensPage</div>
   )
 }
 
-export default Tokens
+export default TokensPage

@@ -1,10 +1,9 @@
 import React from 'react'
-import Page from '../../components/Page/Page'
 
-const CreateToken = () => {
+const CreateTokenPage = () => {
   return (
-    <Page></Page>
+    <div>CreateTokenPage</div>
   )
 }
 
-export default CreateToken
+export default CreateTokenPage
