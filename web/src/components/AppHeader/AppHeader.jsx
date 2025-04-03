@@ -1,12 +1,8 @@
 import { useState } from 'react'
-
 import { Menu as MenuIcon } from '@mui/icons-material'
 import { Box, IconButton, Typography, useMediaQuery } from '@mui/material'
-
 import constants from 'src/state/constants.jsx'
-
 import CustomButton from '../Custom/CustomButton/CustomButton'
-import CustomImage from '../Custom/CustomImage/CustomImage'
 import CustomMenu from '../Custom/CustomMenu/CustomMenu'
 
 import AppHeaderContainer from './AppHeaderContainer'

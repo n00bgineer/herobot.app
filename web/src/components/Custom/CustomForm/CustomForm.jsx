@@ -1,8 +1,6 @@
 import React, { useRef } from 'react'
-
 import { DevTool } from '@hookform/devtools'
 import { Box } from '@mui/material'
-
 import config from '../../../../config'
 
 const CustomForm = ({

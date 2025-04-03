@@ -1,12 +1,7 @@
 import { Box, Typography } from '@mui/material'
-
 import { Link } from "react-router";
-
 import constants from 'src/state/constants.jsx'
-
-import CustomImage from '../Custom/CustomImage/CustomImage'
 import CustomLink from '../Custom/CustomLink/CustomLink'
-
 import AppFooterContainer from './AppFooterContainer'
 
 const AppFooter = () => {

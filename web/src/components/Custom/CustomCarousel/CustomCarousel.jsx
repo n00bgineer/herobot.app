@@ -1,12 +1,8 @@
 import React, { useCallback, useRef, useState, useEffect } from 'react'
-
 import { ChevronLeft, ChevronRight } from '@mui/icons-material'
 import { Box } from '@mui/material'
-
 import mod from 'src/utils/math'
-
 import CustomIconButton from '../CustomIconButton/CustomIconButton'
-
 import CustomCarouselContainer from './CustomCarouselContainer'
 
 /*
