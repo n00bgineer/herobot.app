@@ -37,7 +37,6 @@ const HomePage = () => {
           className="hero-image"
         />
         <HomeHeroSection id="hero" {...constants.page.home.hero} />
-        <AppFooter />
       </HomePageContainer>
     </>
   )
