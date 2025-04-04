@@ -24,13 +24,12 @@ export const verifyTokenMiddleware = async (ctx, next) => {
 
     // CHECKING VALIDITY OF TOKEN FROM THE DATABASE
     const tokenData = await verifyToken(token);
-    ctx.logger.info()
-    console.log(tokenData);
     if(!tokenData)
       return unauthorized(ctx, "INVALID OR EXPIRED TOKEN")
 
-    ctx.set('token'. JSON.stringify({token, ...body}));
-    next();
+    console.log(JSON.stringify({token, ...tokenData}))
+    ctx.set('token', JSON.stringify({token, ...tokenData}));
+    await next();
   }
   catch(error){
     return unauthorized(ctx, "SOMETHING WENT WRONG", error)

@@ -15,7 +15,7 @@ const dbConfig = {
       } 
     : {
         max: 10,
-        idleTimeoutMillis: 60000
+        idleTimeoutMillis: 60000,
       }
 };
 

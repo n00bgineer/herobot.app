@@ -8,7 +8,8 @@ const app = new Hono().basePath('/agent');
 app.post('/verify', verifyTokenMiddleware, validationMiddleware('json', verifyTokenSchema), async (ctx) => {
   // EXTRACTING TOKEN DATA PASSED FROM VERIFY TOKEN MIDDLEWARE
   const tokenData = ctx.get("token");
-  const {token, agentType, agentUsageType} = JSON.parse(tokenData) || {};
+  const { token } = JSON.parse(tokenData) || {};
+  const { agentType, agentUsageType } = await ctx.req.json();
 
   // LOGGING CORRECT TOKEN USAGE
   await logAgentUsage({ token, agentType, agentUsageType });
