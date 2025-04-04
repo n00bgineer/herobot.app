@@ -67,7 +67,6 @@ export const accessToken = pgTable('access_token', {
 export const agentUsageLog = pgTable('agent_usage_log', {
   id: uuid('id').default(sql`gen_random_uuid()`).primaryKey(),
   createdAt: timestamp('created_at').default(sql`CURRENT_TIMESTAMP`).notNull(),
-  expiresAt: timestamp('expires_at').notNull(),
 
   accessToken: uuid('access_token').references(() => accessToken.token, { onDelete: 'cascade', onUpdate: 'cascade' }).notNull(),
   agentType: agentType('agent_type').notNull(),

@@ -15,6 +15,13 @@
       "when": 1743520798004,
       "tag": "0001_clean_ego",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1743762630214,
+      "tag": "0002_free_northstar",
+      "breakpoints": true
     }
   ]
 }

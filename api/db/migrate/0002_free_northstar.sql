@@ -1,0 +1,1 @@
+ALTER TABLE "agent_usage_log" DROP COLUMN "expires_at";
