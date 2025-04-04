@@ -27,7 +27,6 @@ export const verifyTokenMiddleware = async (ctx, next) => {
     if(!tokenData)
       return unauthorized(ctx, "INVALID OR EXPIRED TOKEN")
 
-    console.log(JSON.stringify({token, ...tokenData}))
     ctx.set('token', JSON.stringify({token, ...tokenData}));
     await next();
   }
