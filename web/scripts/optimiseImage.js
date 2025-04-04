@@ -1,8 +1,7 @@
-const fs = require('fs')
-const path = require('path')
-
-const chokidar = require('chokidar')
-const sharp = require('sharp')
+import fs from 'fs'
+import path from 'path'
+import chokidar from 'chokidar'
+import sharp from 'sharp'
 
 const config = {
   watchDir:
