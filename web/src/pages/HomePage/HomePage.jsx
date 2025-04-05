@@ -8,6 +8,7 @@ import useScrollToHash from 'src/hooks/useScrollToHash'
 import constants from 'src/state/constants.jsx'
 
 import HomePageContainer from './HomePageContainer'
+import AppFooter from '../../components/AppFooter/AppFooter'
 
 const HomePage = () => {
   // SETTING LOCAL VARIABLES
@@ -36,6 +37,7 @@ const HomePage = () => {
           className="hero-image"
         />
         <HomeHeroSection id="hero" {...constants.page.home.hero} />
+        <AppFooter />
       </HomePageContainer>
     </>
   )
