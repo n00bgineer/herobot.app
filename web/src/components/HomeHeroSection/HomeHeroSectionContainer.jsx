@@ -30,6 +30,7 @@ const HomeHeroSectionContainer = styled(Box)(({ theme }) => ({
         '&> .title': {
           textAlign: 'center',
           fontWeight: '500',
+          lineHeight: '1.2em',
         },
         '&> .description': {
           textAlign: 'center',
