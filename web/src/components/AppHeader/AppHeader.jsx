@@ -99,22 +99,27 @@ const AppHeader = ({ id }) => {
             />
           </>
         ) : (
-          links.map((link, index) => {
-            const { to, children, variant, ...linkProps } = link || {}
+          <>
+            {links.map((link, index) => {
+              const { to, children, variant, ...linkProps } = link || {}
 
-            return (
-              <CustomButton
-                key={index + 1}
-                component={Link}
-                to={to}
-                size="medium"
-                variant={variant}
-                {...linkProps}
-              >
-                {children}
-              </CustomButton>
-            )
-          })
+              return (
+                <CustomButton
+                  key={index + 1}
+                  component={Link}
+                  to={to}
+                  size="medium"
+                  variant={variant}
+                  {...linkProps}
+                >
+                  {children}
+                </CustomButton>
+              )
+            })}
+            <CustomButton variant="contained" size="medium">
+              Login
+            </CustomButton>
+          </>
         )}
       </Box>
     </AppHeaderContainer>
