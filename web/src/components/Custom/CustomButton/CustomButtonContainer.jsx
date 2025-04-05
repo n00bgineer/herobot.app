@@ -5,7 +5,7 @@ import { styled } from '@mui/material/styles'
 // CUSTOM BUTTON COMPONENT
 const CustomButtonContainer = styled(MuiButton)(({ theme }) => ({
   '&.MuiButton-root': {
-    borderRadius: '9999px',
+    borderRadius: theme.spacing(2),
     textTransform: 'none',
 
     '&:hover': {

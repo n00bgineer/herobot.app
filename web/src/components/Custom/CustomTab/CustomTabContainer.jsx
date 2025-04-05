@@ -5,7 +5,7 @@ import { styled } from '@mui/material/styles'
 const CustomTabContainer = styled(MuiTab)(({ theme }) => ({
   // COMMON STYLES
   '&.MuiTab-root': {
-    borderRadius: '9999px',
+    borderRadius: theme.spacing(2),
     textTransform: 'none',
     minHeight: 'unset',
     display: 'flex',

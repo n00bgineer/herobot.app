@@ -5,10 +5,10 @@ import {
 } from '@mui/material'
 import { styled } from '@mui/material/styles'
 
-export const CustomMenuItem = styled(MuiMenuItem)(() => ({
+export const CustomMenuItem = styled(MuiMenuItem)(({ theme }) => ({
   // ROOT STYLES
   '&.MuiMenuItem-root': {
-    borderRadius: '9999px',
+    borderRadius: theme.spacing(2),
     margin: '5px',
     display: 'flex',
     flexDirection: 'row',
@@ -21,7 +21,7 @@ export const CustomMenuItem = styled(MuiMenuItem)(() => ({
 export const CustomSelectContainer = styled(MuiSelect)(({ theme }) => ({
   // ROOT STYLES
   '&.MuiOutlinedInput-root': {
-    borderRadius: '9999px',
+    borderRadius: theme.spacing(2),
   },
   '&.MuiOutlinedInput-root:hover': {
     boxShadow: '0 0 5px rgba(0, 0, 0, 0.5)',
