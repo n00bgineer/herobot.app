@@ -5,7 +5,7 @@ const NotFoundPageContainer = styled(Box)(({ theme }) => ({
     alignItems: 'center',
     background: theme.palette.success.light,
     backgroundImage:
-      'url("https://res.cloudinary.com/dgu9rv3om/image/upload/q_auto:low/v1685136855/tracepath/assets/404_y1oagy.jpg")',
+      'url("https://res.cloudinary.com/dizbsofmd/image/upload/v1743890049/hero-background_wbkqaw.jpg")',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
@@ -30,7 +30,7 @@ const NotFoundPageContainer = styled(Box)(({ theme }) => ({
       '& .title': {
         textAlign: 'center',
         fontWeight: '600',
-        fontSize: theme.typography.h6.fontSize,
+        fontSize: theme.typography.h3.fontSize,
       },
       '& .description': {
         textAlign: 'center',

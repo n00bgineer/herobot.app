@@ -1,13 +1,13 @@
 import { Box, Card, Typography } from '@mui/material'
-import AppLogoOptimised from 'src/assets/movingcastle-logo--optimised.webp'
-import AppLogo from 'src/assets/movingcastle-logo.webp'
+import AppLogoOptimised from 'src/assets/herosite-logo--optimised.webp'
+import AppLogo from 'src/assets/herosite-logo.webp'
 import CustomButton from 'src/components/Custom/CustomButton/CustomButton'
 import CustomImage from 'src/components/Custom/CustomImage/CustomImage'
 
 import NotFoundPageContainer from './NotFoundPageContainer'
 import { Link } from 'react-router'
 
-export default () => {
+const NotFoundPage = () => {
   return (
     <NotFoundPageContainer>
       <Card className="card">
@@ -18,7 +18,7 @@ export default () => {
             alt="App logo"
             className="app-logo-medium"
           />
-          <Typography variant="h5" className="app-name">
+          <Typography variant="h3" className="app-name">
             HeroBot
           </Typography>
         </Box>
@@ -43,3 +43,5 @@ export default () => {
     </NotFoundPageContainer>
   )
 }
+
+export default NotFoundPage;
