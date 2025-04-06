@@ -7,7 +7,7 @@ import { agentUsageLog } from '../db/schema.js';
  * @returns {Promise<void>} INSERTION RESULT
  */
 export const logAgentUsage = async ({token, agentType, agentUsageType}) => {
-  await db.insert(agentUsageLog).values({
+  await db().insert(agentUsageLog).values({
     agentType,
     agentUsageType,
     accessToken: token

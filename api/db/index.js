@@ -13,4 +13,4 @@ function createDbConnection() {
   const client = postgres(connectionString, options);
   return drizzle(client, { schema });
 }
-export default createDbConnection();
+export default createDbConnection;

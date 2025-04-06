@@ -11,7 +11,7 @@ async function seed() {
     console.log('🌱 STARTING DATABASE SEEDING...');
     
     // Create a test user
-    const newUser = await db.insert(user).values({
+    const newUser = await db().insert(user).values({
       name: 'Test User',
       email: 'test@example.com',
       auth0Id: 'auth0|test123456789',
@@ -27,7 +27,7 @@ async function seed() {
     expiryDate.setDate(expiryDate.getDate() + 30);
     
     // CREATE AN ACCESS TOKEN FOR THE USER
-    const newToken = await db.insert(accessToken).values({
+    const newToken = await db().insert(accessToken).values({
       name: 'API Access Token',
       description: 'Token created by seed script for testing',
       isRevoked: false,
