@@ -1,13 +1,12 @@
 import { verifyToken } from '../methods/token.js'
-import { unauthorized, validationError } from '../utils/responseHandler.js'
-import { verifyTokenSchema } from '../utils/validator.js'
+import { unauthorized } from '../utils/responseHandler.js'
 
 // METHODS
 /**
  * @name verifyTokenMiddleware
- * @description MIDDLEWARE TO VERIFY 
- * @param {*} ctx 
- * @param {*} next 
+ * @description MIDDLEWARE TO VERIFY TOKENS FOR AUTHORIZATION OF REQUESTS FROM EXTERNAL AGENTS
+ * @param {*} ctx CONTEXT OBJECT
+ * @param {*} next NEXT METHOD
  * @returns 
  */
 export const verifyTokenMiddleware = async (ctx, next) => {
