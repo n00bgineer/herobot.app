@@ -53,26 +53,32 @@ export const authMiddleware = async (ctx, next) => {
       
       // SIGNING UP THE USER
       const userInfo = await userInfoResponse.json();
-      userResult = await db().insert(user).values({
-        name: userInfo.name || 'Anonymous User',
-        email: userInfo.email,
-        given_name: userInfo.given_name || null,
-        nickname: userInfo.nickname || null,
-        family_name: userInfo.family_name || null,
-        emailVerified: userInfo.email_verified || false,
-        googleId: googleId,
-        picture: userInfo.picture || null,
-        isActive: true
-      }).returning();
+      userResult = await db().transaction(async (tx) => {
+        // INSERTING USER INFORMATION
+        const newUser = await tx.insert(user).values({
+          name: userInfo.name || 'Anonymous User',
+          email: userInfo.email,
+          given_name: userInfo.given_name || null,
+          nickname: userInfo.nickname || null,
+          family_name: userInfo.family_name || null,
+          emailVerified: userInfo.email_verified || false,
+          googleId: googleId,
+          picture: userInfo.picture || null,
+          isActive: true
+        }).returning();
 
-      // ADDING DEFAULT ACCESS TOKEN FOR THE USER
-      await db().insert(accessToken).values({
-        name: 'DEFAULT ACCESS TOKEN',
-        description: "USER'S DEFAULT ACCESS TOKEN",
-        isRevoked: false,
-        expiresAt: null,
-        userId: userResult[0].id
-      })
+        // INSERTING DEFAULT ACCESS TOKEN FOR THE USER
+        await tx.insert(accessToken).values({
+          name: 'DEFAULT ACCESS TOKEN',
+          description: "USER'S DEFAULT ACCESS TOKEN",
+          isRevoked: false,
+          expiresAt: null,
+          userId: newUser[0].id,
+          accessTokenType: "default_access"
+        });
+        
+        return newUser;
+      });
     }
 
     ctx.set('user', JSON.stringify(userResult[0]));
