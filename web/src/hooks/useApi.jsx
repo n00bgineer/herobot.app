@@ -1,4 +1,5 @@
 // useApi.js
+import { useAuth0 } from '@auth0/auth0-react';
 import { useState, useEffect, useCallback } from 'react';
 
 /**
@@ -9,21 +10,34 @@ import { useState, useEffect, useCallback } from 'react';
  * @param {Array} dependencies DEPENDENCIES THAT SHOULD TRIGGER A RE-FETCH WHEN CHANGED
  * @returns {Object} { data, error, loading, handleApiCall }
  */
-export const useApi = ({config, loadOnMount = false, dependencies = []}) => {
+export const useApi = ({config, loadOnMount = false, requiresAuth = false, dependencies = []}) => {
   // SETTING LOCAL STATE
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(loadOnMount);
+
+  // GETTING AUTH0 METHODS
+  const { getAccessTokenSilently } = useAuth0();
 
   // SETTING METHODS
   const handleApiCall = useCallback(async () => {
     try {
       setLoading(true);
       setError(null);
+
+      // SETTING AUTHORIZATION HEADER IF NEEDED
+      const token = await getAccessTokenSilently();
+      let customHeaders = config.headers || {};
+      if(requiresAuth && token){
+        customHeaders = {
+          ...customHeaders,
+          "Authorization": `Bearer ${token}`
+        }
+      } 
       
       const response = await fetch(config.url, {
         method: config.method || 'GET',
-        headers: config.headers || {},
+        headers: customHeaders,
         body: config.body || null
       });
 
@@ -42,7 +56,7 @@ export const useApi = ({config, loadOnMount = false, dependencies = []}) => {
     } finally {
       setLoading(false);
     }
-  }, [config]);
+  }, [config, requiresAuth, getAccessTokenSilently]);
 
   // Automatically call API on mount if loadOnMount is true
   useEffect(() => {
