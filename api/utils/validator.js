@@ -18,6 +18,12 @@ export const verifyTokenSchema = z.object({
     ])
   }).required()
 
+// CREATE TOKEN SCHEMA for /api/token/create
+export const createTokenSchema = z.object({
+    name: z.string().nonempty(),
+    description: z.string()
+  }).required()
+
 // METHODS
 /**
  * @name createValidator
