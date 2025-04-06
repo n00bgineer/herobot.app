@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import { useAuth0 } from '@auth0/auth0-react';
 import useApi from '../../hooks/useApi';
 import auth from '../../api/auth';
@@ -16,7 +16,7 @@ const Callback = () => {
   // SETTING SIDE EFFECTS
   // ACCESSING USER DATA
   const { data, error, loading } = useApi({
-    config: auth.auth(),
+    config: useMemo(() => auth.auth(), []),
     loadOnMount: true,
     requiresAuth: true,
     dependencies: []
@@ -26,6 +26,7 @@ const Callback = () => {
     if(!loading){
       if(data){
         setUser(data);
+        navigate("/", { replace: true });
       }
       if (error) {
         console.error('ERROR FETCHING USER DATA:', error);
@@ -33,8 +34,7 @@ const Callback = () => {
           message: 'Error fetching user data',
           severity: 'error'
         });
-        navigate("/");
-
+        navigate("/", { replace: true });
       }
     }
   }, [data, loading, error, logout, setGlobalAlert, navigate, setUser]);
