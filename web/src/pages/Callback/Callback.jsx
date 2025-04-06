@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useAuth0 } from '@auth0/auth0-react';
 import useApi from '../../hooks/useApi';
-import user from '../../api/user';
+import auth from '../../api/auth';
 import useStore from '../../state/store';
 import { useNavigate } from 'react-router';
 
@@ -16,7 +16,7 @@ const Callback = () => {
   // SETTING SIDE EFFECTS
   // ACCESSING USER DATA
   const { data, error, loading } = useApi({
-    config: user.getUser(),
+    config: auth.auth(),
     loadOnMount: true,
     requiresAuth: true,
     dependencies: []
