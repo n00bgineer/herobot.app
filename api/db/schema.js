@@ -55,7 +55,7 @@ export const userSession = pgTable('user_sessions', {
 export const accessToken = pgTable('access_token', {
   id: uuid('id').default(sql`gen_random_uuid()`).primaryKey(),
   createdAt: timestamp('created_at').default(sql`CURRENT_TIMESTAMP`).notNull(),
-  expiresAt: timestamp('expires_at').notNull(),
+  expiresAt: timestamp('expires_at'),
 
   name: varchar('name', { length: 128 }).notNull(),
   description: text().default(null),
