@@ -18,13 +18,16 @@ export const useApi = ({config, loadOnMount = false, requiresAuth = false, depen
   // GETTING AUTH0 METHODS
   const { getAccessTokenSilently } = useAuth0();
 
-  // SETTING UP ABORT CONTROLLER FOR FETCH REQUESTS
-  const controller = new AbortController();
-  const signal = controller.signal;
 
   // SETTING METHODS
-  const handleApiCall = useCallback(async () => {
-
+  /**
+   * @name handleApiCall
+   * @description FUNCTION TO HANDLE API CALLS
+   * @param {AbortSignal} signal ABORT SIGNAL FOR FETCH REQUEST
+   * @returns {Promise} API RESPONSE
+   */
+  const handleApiCall = useCallback(async (signal) => {
+  
     try {
       setLoading(true);
       setError(null);
@@ -55,7 +58,9 @@ export const useApi = ({config, loadOnMount = false, requiresAuth = false, depen
       setData(result.data);
       return result;
     } catch (error) {
-      setError(error);
+      if (error.name !== 'AbortError') {
+        setError(error);
+      }
       return null;
     } finally {
       setLoading(false);
@@ -64,9 +69,14 @@ export const useApi = ({config, loadOnMount = false, requiresAuth = false, depen
 
   // Automatically call API on mount if loadOnMount is true
   useEffect(() => {
+    // SETTING UP ABORT CONTROLLER FOR FETCH REQUESTS
+    const controller = new AbortController();
+    const signal = controller.signal;
+
     if (loadOnMount) {
-      handleApiCall();
+      handleApiCall(signal);
     }
+
     return () => controller.abort();
   }, [loadOnMount, handleApiCall, ...dependencies]);
 
