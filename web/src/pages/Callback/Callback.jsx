@@ -4,6 +4,7 @@ import useApi from '../../hooks/useApi';
 import auth from '../../api/auth';
 import useStore from '../../state/store';
 import { useNavigate } from 'react-router';
+import SplashScreen from '../../components/SplashScreen/SplashScreen';
 
 const Callback = () => {
   // SETTING HOOKS
@@ -39,7 +40,7 @@ const Callback = () => {
     }
   }, [data, loading, error, logout, setGlobalAlert, navigate, setUser]);
   
-  return (<></>);
+  return (<SplashScreen />);
 };
 
 export default Callback;
