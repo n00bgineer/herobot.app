@@ -1,16 +1,15 @@
+
 import { useState } from 'react'
+import { Link } from 'react-router'
 import { Menu as MenuIcon } from '@mui/icons-material'
 import { Box, IconButton, Typography, useMediaQuery } from '@mui/material'
 import constants from 'src/state/constants.jsx'
 import CustomButton from '../Custom/CustomButton/CustomButton'
 import CustomMenu from '../Custom/CustomMenu/CustomMenu'
-
 import AppHeaderContainer from './AppHeaderContainer'
-import { Link, useLocation } from 'react-router'
 
 const AppHeader = ({ id }) => {
   // SETTING HOOKS
-  const { pathname } = useLocation()
   const isMobileViewport = useMediaQuery('(min-width:900px)')
 
   // SETTING LOCAL STATES
@@ -20,23 +19,6 @@ const AppHeader = ({ id }) => {
   const { appName, links } =
     constants.global.header || {}
   const open = Boolean(anchorEl)
-
-  // SETTING CONDITIONALS
-  if (
-    pathname !== "/" &&
-    links.findIndex((link) => link.children.toUpperCase() === 'HOME') === -1
-  ) {
-    links.unshift({
-      to: "/",
-      children: 'Home',
-      variant: 'text',
-    })
-  } else if (
-    pathname === "/" &&
-    links.findIndex((link) => link.children.toUpperCase() === 'HOME') !== -1
-  ) {
-    links.shift()
-  }
 
   // METHODS
   /**
