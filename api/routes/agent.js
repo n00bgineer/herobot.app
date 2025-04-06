@@ -6,6 +6,7 @@ import { sendSuccess } from "../utils/responseHandler";
 
 const app = new Hono().basePath('/agent');
 
+// ROUTE FOR VERIFYING EXTERNAL TOKEN ACCESS
 app.post('/verify', verifyTokenMiddleware, validationMiddleware('json', verifyTokenSchema), async (ctx) => {
   // EXTRACTING TOKEN DATA PASSED FROM VERIFY TOKEN MIDDLEWARE
   const tokenData = ctx.get("token");
