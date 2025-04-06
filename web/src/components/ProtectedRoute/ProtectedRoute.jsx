@@ -1,9 +1,10 @@
 import { useAuth0 } from "@auth0/auth0-react";
-import { Navigate } from "react-router";
+import { Navigate, Outlet } from "react-router";
 import SplashScreen from "../SplashScreen/SplashScreen";
 
-const ProtectedRoute = ({ children }) => {
+const ProtectedRoute = () => {
   const { isAuthenticated, isLoading } = useAuth0();
+  console.log(isAuthenticated, isLoading)
 
   // IN LOADING STATE
   if (isLoading) {
@@ -14,7 +15,7 @@ const ProtectedRoute = ({ children }) => {
     if (!isAuthenticated) {
       return <Navigate to="/" replace />;
     }
-    return children;
+    return <Outlet />;
   }
 };
 
