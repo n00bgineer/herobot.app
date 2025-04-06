@@ -90,7 +90,7 @@ const AppHeader = ({ id }) => {
                   key={index + 1}
                   component={Link}
                   to={to}
-                  size="medium"
+                  size="small"
                   variant={variant}
                   {...linkProps}
                 >
@@ -98,7 +98,7 @@ const AppHeader = ({ id }) => {
                 </CustomButton>
               )
             })}
-            <CustomButton variant="contained" size="medium">
+            <CustomButton variant="contained" size="small">
               Login
             </CustomButton>
           </>
