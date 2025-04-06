@@ -1,4 +1,4 @@
-import env from '../env.js';
+import env from '../env_config.js';
 
 // SETTING LOCAL VARIABLES
 const { NODE_ENV, DATABASE_URL } = env;

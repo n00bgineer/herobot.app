@@ -1,5 +1,5 @@
 import postgres from 'postgres';
-import env from '../env.js';
+import env from '../env_config.js';
 import dbConfig from './config.js';
 import * as schema from './schema.js';
 import { drizzle } from 'drizzle-orm/postgres-js';
