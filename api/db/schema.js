@@ -30,9 +30,11 @@ export const user = pgTable('user', {
   createdAt: timestamp('created_at').default(sql`CURRENT_TIMESTAMP`).notNull(),
   updatedAt: timestamp('updated_at').default(sql`CURRENT_TIMESTAMP`).notNull(),
   
-  auth0Id: varchar('auth0_id', { length: 128 }).unique().notNull(),
-  googleId: varchar('google_id', { length: 128 }),
+  googleId: varchar('google_id', { length: 128 }).unique().notNull(),
   name: text('name').notNull(),
+  given_name: text('given_name'),
+  family_name: text('family_name'),
+  nickname: text('nickname'),
   email: varchar('email', { length: 255 }).unique().notNull(),
   emailVerified: boolean('email_verified').default(false),
   picture: text('picture'),
