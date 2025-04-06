@@ -18,8 +18,13 @@ export const useApi = ({config, loadOnMount = false, requiresAuth = false, depen
   // GETTING AUTH0 METHODS
   const { getAccessTokenSilently } = useAuth0();
 
+  // SETTING UP ABORT CONTROLLER FOR FETCH REQUESTS
+  const controller = new AbortController();
+  const signal = controller.signal;
+
   // SETTING METHODS
   const handleApiCall = useCallback(async () => {
+
     try {
       setLoading(true);
       setError(null);
@@ -37,7 +42,8 @@ export const useApi = ({config, loadOnMount = false, requiresAuth = false, depen
       const response = await fetch(config.url, {
         method: config.method || 'GET',
         headers: customHeaders,
-        body: config.body || null
+        body: config.body || null,
+        signal
       });
 
       if (!response.ok) {
@@ -61,6 +67,7 @@ export const useApi = ({config, loadOnMount = false, requiresAuth = false, depen
     if (loadOnMount) {
       handleApiCall();
     }
+    return () => controller.abort();
   }, [loadOnMount, handleApiCall, ...dependencies]);
 
   return {
