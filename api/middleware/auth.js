@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 import db from "../db/index.js";
-import { user } from "../db/schema.js";
+import { accessToken, user } from "../db/schema.js";
 import { verifyAuth0Token } from "../methods/token.js";
 import env_config from "../env_config.js";
 import { unauthorized } from "../utils/responseHandler.js";
