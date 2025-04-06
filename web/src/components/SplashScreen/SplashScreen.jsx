@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react'
 import { Box, Typography, } from '@mui/material'
 import { useAuth0 } from '@auth0/auth0-react'
 import useStore from '../../state/store'
+import AppLogoOptimised from 'src/assets/herosite-logo--optimised.webp'
+import AppLogo from 'src/assets/herosite-logo.webp'
 
 const SplashScreen = ({ showProgress = false }) => {
   // SETTING LOCAL STATES
@@ -36,12 +38,11 @@ const SplashScreen = ({ showProgress = false }) => {
   return (
     <SplashScreenContainer className="splash-modal">
       <Box className="splash-modal-content-container">
-        <img
-          src="https://res.cloudinary.com/dgu9rv3om/image/upload/q_auto:low/v1683873993/tracepath/assets/logo1-cropped_hcmo16.png"
-          alt="Tracepath logo"
-          className="logo"
-          loading="lazy"
-        />
+        <CustomImage
+          src={AppLogo}
+          placeholderSrc={AppLogoOptimised}
+          className="app-logo-large"
+          alt="App Logo" />
         {
           showProgress &&
           <>
