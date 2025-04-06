@@ -4,10 +4,9 @@ import HomePage from './pages/HomePage/HomePage'
 import ToSPage from './pages/ToSPage/ToSPage'
 import PrivacyPage from './pages/PrivacyPage/PrivacyPage'
 import AboutPage from './pages/AboutPage/AboutPage'
-import RoadmapsPage from './pages/Roadmap/RoadmapsPage/RoadmapsPage'
-import RoadmapPage from './pages/Roadmap/RoadmapPage/RoadmapPage'
-import CreateRoadmapPage from './pages/Roadmap/CreateRoadmapPage/CreateRoadmapPage'
-import EditRoadmapPage from './pages/Roadmap/EditRoadmapPage/EditRoadmapPage'
+import JourneysPage from './pages/Journey/JourneysPage/JourneysPage'
+import JourneyPage from './pages/Journey/JourneyPage/JourneyPage'
+import CreateJourneyPage from './pages/Journey/CreateJourneyPage/CreateJourneyPage'
 import TokensPage from './pages/TokensPage/TokensPage'
 import CreateTokenPage from './pages/CreateTokenPage/CreateTokenPage'
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
@@ -16,6 +15,10 @@ import Callback from './pages/Callback/Callback'
 import { Slide, Typography } from '@mui/material'
 import useStore from './state/store'
 import CustomSnackbar from './components/Custom/CustomSnackbar/CustomSnackbar'
+import EvaluationsPage from './pages/Evaluation/EvaluationsPage/EvaluationsPage'
+import EvaluationPage from './pages/Evaluation/EvaluationPage/EvaluationPage'
+import CreateEvaluationPage from './pages/Evaluation/CreateEvaluationPage/CreateEvaluationPage'
+import UserPage from './pages/User/UserPage/UserPage'
 
 function App() {
   // GETTING GLOBAL STATES
@@ -49,43 +52,47 @@ function App() {
       <Route path="privacy" element={<PrivacyPage />} />
       <Route path="callback" element={<Callback />} />
 
-      <Route element={AppLayout}>
-        {/* ROADMAP ROUTES */}
-        <Route path='roadmaps' element={<RoadmapsPage />} />
-        <Route path="/roadmap">
-          <Route 
-            path="template/:id" 
-            element={<RoadmapPage />} />
-          <Route
-            path=":id" 
-            element={<ProtectedRoute>
-              <RoadmapPage />
-            </ProtectedRoute>} />
-          <Route 
-            path="create" 
-            element={<ProtectedRoute>
-              <CreateRoadmapPage />
-            </ProtectedRoute>} />
-          <Route 
-            path="edit/:id" 
-            element={<ProtectedRoute>
-              <EditRoadmapPage />
-            </ProtectedRoute>} />
-        </Route>
-        
-        {/* TOKEN ROUTES */}
+      <Route element={<AppLayout />}>
+        {/* JOURNEY ROUTES */}
         <Route 
-          path='tokens' 
-          element={
-            <ProtectedRoute>
-              <TokensPage />
-            </ProtectedRoute>} />
-        <Route path='token'>
+          path="journey/template/:id" 
+          element={<JourneyPage />} />
+
+        <Route element={<ProtectedRoute />}>
+          {/* JOURNEY ROUTES */}
           <Route 
-            path="create" 
-            element={<ProtectedRoute>
-              <CreateTokenPage />
-            </ProtectedRoute>} />
+            path='journeys' 
+            element={<JourneysPage />} />
+          <Route
+            path="journey/:id" 
+            element={<JourneyPage />} />
+          <Route 
+            path="journey/create" 
+            element={<CreateJourneyPage />} />
+            
+          {/* EVAL ROUTES */}
+          <Route 
+            path='evals' 
+            element={<EvaluationsPage />} />
+          <Route
+            path="eval/:id" 
+            element={<EvaluationPage />} />
+          <Route 
+            path="eval/create" 
+            element={<CreateEvaluationPage />} />
+
+          {/* TOKEN ROUTES */}
+          <Route 
+            path='tokens' 
+            element={<TokensPage />} />
+          <Route 
+            path="token/create" 
+            element={<CreateTokenPage />} />
+
+          {/* USER ROUTES */}
+          <Route 
+            path='user' 
+            element={<UserPage />} />
         </Route>
       </Route>
 
