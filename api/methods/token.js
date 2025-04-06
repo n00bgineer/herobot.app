@@ -1,9 +1,8 @@
 import { eq } from 'drizzle-orm';
 import db from '../db/index.js';
 import { accessToken } from '../db/schema.js';
-import jwksClient from 'jwks-rsa';
-import jwt from 'jsonwebtoken';
 import env_config from '../env_config.js';
+import { createRemoteJWKSet, jwtVerify }  from 'jose';
 
 // VERIFYING TOKEN FROM AGENTS
 /**
@@ -15,7 +14,7 @@ import env_config from '../env_config.js';
  */
 export const verifyToken = async (token) => {
   try {
-    const result = await db
+    const result = await db()
       .select()
       .from(accessToken)
       .where(
@@ -43,28 +42,6 @@ export const verifyToken = async (token) => {
   }
 }
 
-// VERIFYING TOKEN FROM CLIENT
-// GENERATING JWT TOKEN FOR AUTHORIZATION
-const client = jwksClient({
-  jwksUri: `https://${env_config.AUTH0_DOMAIN}/.well-known/jwks.json`,
-  cache: true,
-  rateLimit: true,
-});
-
-/**
- * @name getSigningKey
- * @description GETS THE SIGNING KEY FROM AUTH0 FOR JWT VERIFICATION
- * @param {*} header HEADER
- * @param {*} callback CALLBACK FUNCTION
- */
-const getSigningKey = (header, callback) => {
-  client.getSigningKey(header.kid, function(err, key) {
-    if (err) return callback(err);
-    const signingKey = key.publicKey || key.rsaPublicKey;
-    callback(null, signingKey);
-  });
-};
-
 /**
  * @name verifyAuth0Token
  * @description VERIFIES THE AUTH0 TOKEN USING JWT
@@ -72,19 +49,12 @@ const getSigningKey = (header, callback) => {
  * @returns {Promise<object>} DECODED TOKEN DATA
  */
 export const verifyAuth0Token = async (token) => {
-  return new Promise((resolve, reject) => {
-    jwt.verify(
-      token,
-      getSigningKey,
-      {
-        audience: env_config.AUTH0_AUDIENCE,
-        issuer: env_config.AUTH0_DOMAIN,
-        algorithms: ['RS256']
-      },
-      (err, decoded) => {
-        if (err) return reject(err);
-        resolve(decoded);
-      }
+    const JWKS = createRemoteJWKSet(
+      new URL(`${env_config.AUTH0_DOMAIN}.well-known/jwks.json`)
     );
-  })
+    const { payload } = await jwtVerify(token, JWKS, {
+      audience: env_config.AUTH0_AUDIENCE,
+      issuer: env_config.AUTH0_DOMAIN,
+    });
+    return payload;
 };
