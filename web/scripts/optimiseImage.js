@@ -47,9 +47,9 @@ const optimiseImage = async (filePath) => {
 
     // DELETE THE ORIGINAL FILE AFTER PROCESSING
     if (config.deletedOriginalFile) {
-      fs.unlink(filePath, (err) => {
-        if (err) {
-          console.error(`ERROR DELETING FILE ${filePath}:`, err)
+      fs.unlink(filePath, (error) => {
+        if (error) {
+          console.error(`ERROR DELETING FILE ${filePath}:`, error)
         } else {
           console.log(`ORIGINAL FILE DELETED: ${filePath}`)
         }

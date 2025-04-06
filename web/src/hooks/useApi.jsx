@@ -48,8 +48,8 @@ export const useApi = ({config, loadOnMount = false, requiresAuth = false, depen
       const result = await response.json();
       setData(result.data);
       return result;
-    } catch (err) {
-      setError(err);
+    } catch (error) {
+      setError(error);
       return null;
     } finally {
       setLoading(false);
