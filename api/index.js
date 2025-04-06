@@ -1,4 +1,4 @@
-import env from './env'
+import env_config from './env_config'
 import { Hono } from 'hono'
 import { cors } from 'hono/cors'
 import { logger } from 'hono/logger'
@@ -7,12 +7,12 @@ import { sendSuccess } from './utils/responseHandler'
 
 // GETTING CORS ALLOWED ORIGIN
 const agentOrigins = [
-  env.ATHENA_AGENT_URL, 
-  env.APOLLO_AGENT_URL, 
-  env.HERMES_AGENT_URL
+  env_config.ATHENA_AGENT_URL, 
+  env_config.APOLLO_AGENT_URL, 
+  env_config.HERMES_AGENT_URL,
 ]
 const clientOrigins = [ 
-  env.CLIENT_URL || 'http://localhost:5173'
+  env_config.CLIENT_URL || 'http://localhost:5173'
 ]
 
 // CREATING SERVER APP AND MIDDLEWARES

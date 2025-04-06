@@ -77,8 +77,8 @@ export const verifyAuth0Token = async (token) => {
       token,
       getSigningKey,
       {
-        audience: process.env.AUTH0_AUDIENCE,
-        issuer: `https://${process.env.AUTH0_DOMAIN}/`,
+        audience: env_config.AUTH0_AUDIENCE,
+        issuer: env_config.AUTH0_DOMAIN,
         algorithms: ['RS256']
       },
       (err, decoded) => {
