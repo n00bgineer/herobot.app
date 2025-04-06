@@ -21,12 +21,11 @@ const Callback = () => {
     requiresAuth: true,
     dependencies: []
   });
-  
-  // SETTING USER DATA OR ERROR STATE 
+
   useEffect(() => {
     if(!loading){
       if(data){
-        setUser(data); 
+        setUser(data);
       }
       if (error) {
         console.error('ERROR FETCHING USER DATA:', error);
@@ -35,11 +34,7 @@ const Callback = () => {
           severity: 'error'
         });
         navigate("/");
-        logout({ 
-          logoutParams: {
-            returnTo: window.location.origin
-          } 
-        });
+
       }
     }
   }, [data, loading, error, logout, setGlobalAlert, navigate, setUser]);

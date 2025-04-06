@@ -1,7 +1,4 @@
-import {
-  Favorite,
-} from '@mui/icons-material'
-
+import { Favorite } from '@mui/icons-material'
 import AppLogo from 'src/assets/herosite-logo.webp'
 import AppLogoOptimised from '../assets/herosite-logo--optimised.webp'
 
@@ -13,9 +10,7 @@ export default {
       siteUrl: "https://herobot.site/",
       appLogo: AppLogo,
       appLogoOptimised: AppLogoOptimised,
-      links: [
-        
-      ],
+      links: [],
     },
     footer: {
       appName: 'HeroBot',

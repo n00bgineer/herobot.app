@@ -1,4 +1,3 @@
-// useApi.js
 import { useAuth0 } from '@auth0/auth0-react';
 import { useState, useEffect, useCallback } from 'react';
 
@@ -41,7 +40,6 @@ export const useApi = ({config, loadOnMount = false, requiresAuth = false, depen
         body: config.body || null
       });
 
-      // Handle non-200 responses
       if (!response.ok) {
         throw new Error(`API ERROR: ${response.status} ${response.statusText}`);
       }

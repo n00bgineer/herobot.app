@@ -7,6 +7,8 @@ import constants from 'src/state/constants.jsx'
 import CustomButton from '../Custom/CustomButton/CustomButton'
 import CustomMenu from '../Custom/CustomMenu/CustomMenu'
 import AppHeaderContainer from './AppHeaderContainer'
+import { useAuth0 } from '@auth0/auth0-react'
+import env_config from '../../../env_config'
 
 const AppHeader = ({ id }) => {
   // SETTING HOOKS
@@ -14,6 +16,9 @@ const AppHeader = ({ id }) => {
 
   // SETTING LOCAL STATES
   const [anchorEl, setAnchorEl] = useState(null)
+
+  // GETTING AUTHENTICATION STATES & METHODS
+  const { loginWithRedirect, isAuthenticated, logout } = useAuth0()
 
   // SETTING LOCAL VARIABL  ES
   const { appName, links } =
@@ -98,9 +103,25 @@ const AppHeader = ({ id }) => {
                 </CustomButton>
               )
             })}
-            <CustomButton variant="contained" size="small">
-              Login
-            </CustomButton>
+            {
+              isAuthenticated ?
+              <CustomButton 
+                variant="contained" 
+                size="small" 
+                onClick={() => logout({ 
+                  logoutParams: {
+                    returnTo: env_config.LOGOUT_URL
+                  }
+                })}>
+                Logout
+              </CustomButton>:
+              <CustomButton 
+                variant="contained" 
+                size="small" 
+                onClick={() => loginWithRedirect()}>
+                Login
+              </CustomButton>
+            }
           </>
         )}
       </Box>
