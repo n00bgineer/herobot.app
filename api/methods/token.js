@@ -1,20 +1,11 @@
 import { eq } from 'drizzle-orm';
 import db from '../db/index.js';
-import { accessToken, agentUsageLog } from '../db/schema.js';
+import { accessToken } from '../db/schema.js';
+import jwksClient from 'jwks-rsa';
+import jwt from 'jsonwebtoken';
+import env_config from '../env_config.js';
 
-/**
- * @name logAgentUsage
- * @description METHOD TO LOG THE USER AGENT'S USAGE
- * @returns
- */
-export const logAgentUsage = async ({token, agentType, agentUsageType}) => {
-  await db.insert(agentUsageLog).values({
-    agentType,
-    agentUsageType,
-    accessToken: token
-  })
-}
-
+// VERIFYING TOKEN FROM AGENTS
 /**
  * @name verifyToken
  * @description VERIFIES IF A TOKEN EXISTS IN THE DATABASE AND IS VALID
@@ -51,3 +42,49 @@ export const verifyToken = async (token) => {
     return null;
   }
 }
+
+// VERIFYING TOKEN FROM CLIENT
+// GENERATING JWT TOKEN FOR AUTHORIZATION
+const client = jwksClient({
+  jwksUri: `https://${env_config.AUTH0_DOMAIN}/.well-known/jwks.json`,
+  cache: true,
+  rateLimit: true,
+});
+
+/**
+ * @name getSigningKey
+ * @description GETS THE SIGNING KEY FROM AUTH0 FOR JWT VERIFICATION
+ * @param {*} header HEADER
+ * @param {*} callback CALLBACK FUNCTION
+ */
+const getSigningKey = (header, callback) => {
+  client.getSigningKey(header.kid, function(err, key) {
+    if (err) return callback(err);
+    const signingKey = key.publicKey || key.rsaPublicKey;
+    callback(null, signingKey);
+  });
+};
+
+/**
+ * @name verifyAuth0Token
+ * @description VERIFIES THE AUTH0 TOKEN USING JWT
+ * @param {*} token TOKEN STRING
+ * @returns {Promise<object>} DECODED TOKEN DATA
+ */
+export const verifyAuth0Token = async (token) => {
+  return new Promise((resolve, reject) => {
+    jwt.verify(
+      token,
+      getSigningKey,
+      {
+        audience: process.env.AUTH0_AUDIENCE,
+        issuer: `https://${process.env.AUTH0_DOMAIN}/`,
+        algorithms: ['RS256']
+      },
+      (err, decoded) => {
+        if (err) return reject(err);
+        resolve(decoded);
+      }
+    );
+  })
+};
