@@ -4,6 +4,7 @@ import { cors } from 'hono/cors'
 import { logger } from 'hono/logger'
 import agent from './routes/agent'
 import { sendSuccess } from './utils/responseHandler'
+import auth from './routes/auth'
 
 // GETTING CORS ALLOWED ORIGIN
 const agentOrigins = [
@@ -39,5 +40,6 @@ app.get('/health', (ctx) => {
   return sendSuccess(ctx, null, "ONLINE")
 });
 app.route('/', agent);
+app.route('/', auth);
 
 export default app;
