@@ -1,8 +1,12 @@
 import React from 'react'
+import { Outlet } from 'react-router'
 
-const AppLayout = ({children}) => {
+const AppLayout = () => {
   return (
-    <div>{children}</div>
+    <div>
+      AppLayout
+      <Outlet />
+    </div>
   )
 }
 
