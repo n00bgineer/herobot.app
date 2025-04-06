@@ -1,4 +1,4 @@
-import { Favorite } from '@mui/icons-material'
+import { AccountCircle, Favorite, Quiz, Route } from '@mui/icons-material'
 import AppLogo from 'src/assets/herosite-logo.webp'
 import AppLogoOptimised from '../assets/herosite-logo--optimised.webp'
 
@@ -33,7 +33,7 @@ export default {
             },
             {
               url: '/#roadmaps',
-              text: 'Roadmaps',
+              text: 'Journeys',
             },
             {
               url: '/#feature',
@@ -89,6 +89,25 @@ export default {
         },
       },
     },
+    bottomNavigation: {
+      topActions: [
+        {
+          link: "/journeys",
+          label: "Journey",
+          selectedIcon: <Route />
+        },
+        {
+          link: "/evals",
+          label: "Evaluate",
+          selectedIcon: <Quiz />
+        },
+        {
+          link: "/user",
+          label: "You",
+          selectedIcon: <AccountCircle />
+        },
+      ]
+    }
   },
   page: {
     home: {
